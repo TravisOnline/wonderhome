@@ -217,7 +217,7 @@ tile_set = SubResource("TileSet_kkxfw")
 tile_map_data = PackedByteArray("AAAIAAQAAQAEAAAAAAAJAAQAAQAFAAAAAAAAAAIAAQAIAAAAAAAAAAMAAQAIAAEAAAA=")
 tile_set = SubResource("TileSet_kkxfw")
 
-[node name="WorldPlaya" parent="." groups=["world_playa"] instance=ExtResource("1_4waot")]
+[node name="WorldPlaya" parent="." instance=ExtResource("1_4waot")]
 position = Vector2(219, 161)
 
 [node name="ZombieSimple" parent="." instance=ExtResource("5_nxy05")]

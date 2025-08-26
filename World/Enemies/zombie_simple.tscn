@@ -405,9 +405,6 @@ states/Idle/position = Vector2(369, 96)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_oyf6k")
 states/Walk/position = Vector2(598, 87)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_j4g70"]
-radius = 5.09902
-
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_kem0e"]
 var/speed/name = &"speed"
 var/speed/type = 3
@@ -452,6 +449,9 @@ root_task = SubResource("BTSequence_jjdgc")
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_y8tg3"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_j4g70"]
+radius = 5.09902
+
 [node name="ZombieSimple" type="CharacterBody2D"]
 motion_mode = 1
 wall_min_slide_angle = 0.0174533
@@ -478,11 +478,6 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(-0.000791788, 1)
 parameters/Walk/blend_position = Vector2(0, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
-scale = Vector2(1.68, 1.68)
-shape = SubResource("CircleShape2D_j4g70")
-
 [node name="BTPlayer" type="BTPlayer" parent="."]
 behavior_tree = SubResource("BehaviorTree_leu3n")
 blackboard_plan = SubResource("BlackboardPlan_y8tg3")
@@ -491,3 +486,17 @@ blackboard_plan = SubResource("BlackboardPlan_y8tg3")
 avoidance_enabled = true
 debug_enabled = true
 debug_use_custom = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.83, 0.83)
+shape = SubResource("CircleShape2D_j4g70")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+scale = Vector2(1.68, 1.68)
+shape = SubResource("CircleShape2D_j4g70")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

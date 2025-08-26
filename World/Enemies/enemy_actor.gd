@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	travel_direction = velocity.normalized()
-	print(velocity.length())
+	#print(velocity.length())
 	update_animation_parameters()
 	select_animation()
 	_post_physics_process.call_deferred()
@@ -32,7 +32,7 @@ func move(p_velocity: Vector2) -> void:
 func update_animation_parameters() -> void:
 	if travel_direction == Vector2.ZERO:
 		return
-		
+	# TODO: Fix the animation freak out when going from like 359 degrees to 0
 	animation_tree["parameters/Idle/blend_position"] = travel_direction
 	animation_tree["parameters/Walk/blend_position"] = travel_direction
 
@@ -44,3 +44,7 @@ func select_animation() -> void:
 
 func _on_agent_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("world_playa"):
+		get_tree().change_scene_to_file("res://Battle/Battle.tscn")

@@ -162,6 +162,7 @@ func connect_to_buttons(target: Object, _name: String = name) -> void:
 func button_enable_focus(on: bool) -> void:
 	var mode: FocusMode = FocusMode.FOCUS_ALL if on else FocusMode.FOCUS_NONE
 	for button in get_buttons():
+		# THIS IS THE ISSUE V need a try -> if fail select next enemy in array
 		button.set_focus_mode(mode)
 	
 	if hide_on_focus_exit:
