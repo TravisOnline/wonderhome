@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BattleActor" load_steps=4 format=3 uid="uid://ds3coka02p1kb"]
+
+[ext_resource type="Script" uid="uid://ckh6yk2dmmq31" path="res://Battle/battle_actor.gd" id="1_kyu0w"]
+[ext_resource type="Script" uid="uid://npkxg6fkkcni" path="res://Battle/item.gd" id="1_m48fs"]
+[ext_resource type="Resource" uid="uid://bity724l0lekn" path="res://Items/refreshing_herb.tres" id="2_8oguk"]
+
+[resource]
+script = ExtResource("1_kyu0w")
+name = "Poooo!"
+hp_max = 66
+sp_max = 20
+attack = 15
+defense = 1
+items = Array[ExtResource("1_m48fs")]([ExtResource("2_8oguk"), ExtResource("2_8oguk"), ExtResource("2_8oguk")])
+drops = Array[ExtResource("1_m48fs")]([])
+metadata/_custom_type_script = "uid://ckh6yk2dmmq31"

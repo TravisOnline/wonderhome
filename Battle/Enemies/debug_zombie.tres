@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BattleActor" load_steps=4 format=3 uid="uid://b403wavhdj4tl"]
+
+[ext_resource type="Script" uid="uid://npkxg6fkkcni" path="res://Battle/item.gd" id="1_gv2pm"]
+[ext_resource type="Script" uid="uid://ckh6yk2dmmq31" path="res://Battle/battle_actor.gd" id="1_o455n"]
+[ext_resource type="Texture2D" uid="uid://dumlwbcx7l5c" path="res://DebugResources/Art/bbbhuh.JPG" id="2_vxy40"]
+
+[resource]
+script = ExtResource("1_o455n")
+sprite = ExtResource("2_vxy40")
+name = "Debug Zombie"
+hp_max = 5
+sp_max = 3
+attack = 2
+defense = 1
+items = Array[ExtResource("1_gv2pm")]([])
+drops = Array[ExtResource("1_gv2pm")]([])
+metadata/_custom_type_script = "uid://ckh6yk2dmmq31"

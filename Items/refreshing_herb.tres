@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://bity724l0lekn"]
+
+[ext_resource type="Script" uid="uid://npkxg6fkkcni" path="res://Battle/item.gd" id="1_b1opg"]
+
+[resource]
+script = ExtResource("1_b1opg")
+quantity = 1
+stackable = false
+value = 20
+metadata/_custom_type_script = "uid://npkxg6fkkcni"

@@ -1,0 +1,40 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://cv5r5rfdtkn78"
+path="res://.godot/imported/dogica.ttf-635a5d9ff2ca85999fa3715069e3b487.fontdata"
+
+[deps]
+
+source_file="res://Art/Fonts/dogica.ttf"
+dest_files=["res://.godot/imported/dogica.ttf-635a5d9ff2ca85999fa3715069e3b487.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=0
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=4
+keep_rounding_remainders=true
+oversampling=3.6
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=false
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0)
+}]
+language_support={}
+script_support={}
+opentype_features={}

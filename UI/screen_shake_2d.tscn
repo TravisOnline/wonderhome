@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxqj2vg8balkr"]
+
+[ext_resource type="Script" uid="uid://cpaqyp4jgo6bk" path="res://Utility/Screenshake/screenshake2d.gd" id="1_s1uwp"]
+[ext_resource type="FastNoiseLite" uid="uid://umurcemhf5nb" path="res://Utility/Screenshake/fast_noise_lite01.tres" id="2_2umnw"]
+
+[node name="ScreenShake2D" type="Camera2D"]
+anchor_mode = 0
+script = ExtResource("1_s1uwp")
+decay = 0.5
+max_offset = Vector2(64, 64)
+max_roll = 0.075
+noise = ExtResource("2_2umnw")
+
+[node name="ChangeRotationTarget" type="Timer" parent="."]

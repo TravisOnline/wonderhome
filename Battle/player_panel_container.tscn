@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://co26covctfe86"]
+
+[ext_resource type="Script" uid="uid://b4g0rmvh0vqui" path="res://Battle/player_window.gd" id="1_vyrmv"]
+[ext_resource type="Theme" uid="uid://co1dvs00h351h" path="res://UI/menu1-theme.tres" id="1_wym12"]
+[ext_resource type="StyleBox" uid="uid://ctloj5ql28t3i" path="res://UI/menu1-style.tres" id="2_jfv7i"]
+[ext_resource type="FontFile" uid="uid://cv5r5rfdtkn78" path="res://Art/Fonts/dogica.ttf" id="3_tsir0"]
+
+[node name="PlayerWindow" type="Button"]
+custom_minimum_size = Vector2(117, 70)
+offset_right = 117.0
+offset_bottom = 70.0
+theme = ExtResource("1_wym12")
+script = ExtResource("1_vyrmv")
+
+[node name="PlayerPanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+theme = ExtResource("1_wym12")
+theme_override_styles/panel = ExtResource("2_jfv7i")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerPanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="PlayerNameLabel" type="Label" parent="PlayerPanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_tsir0")
+text = "PNAME"
+
+[node name="HPHolder" type="HBoxContainer" parent="PlayerPanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="HP_Text" type="Label" parent="PlayerPanelContainer/VBoxContainer/HPHolder"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_tsir0")
+text = "HP:"
+
+[node name="HP_Value" type="Label" parent="PlayerPanelContainer/VBoxContainer/HPHolder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_tsir0")
+text = "???"
+horizontal_alignment = 2
+
+[node name="SPHolder" type="HBoxContainer" parent="PlayerPanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="SP_Text" type="Label" parent="PlayerPanelContainer/VBoxContainer/SPHolder"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_tsir0")
+text = "SP:"
+
+[node name="SP_Value" type="Label" parent="PlayerPanelContainer/VBoxContainer/SPHolder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_tsir0")
+text = "???"
+horizontal_alignment = 2

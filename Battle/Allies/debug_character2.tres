@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BattleActor" load_steps=4 format=3 uid="uid://c8wnddo2qnlrt"]
+
+[ext_resource type="Script" uid="uid://ckh6yk2dmmq31" path="res://Battle/battle_actor.gd" id="1_a1kul"]
+[ext_resource type="Script" uid="uid://npkxg6fkkcni" path="res://Battle/item.gd" id="1_jwydx"]
+[ext_resource type="Resource" uid="uid://bity724l0lekn" path="res://Items/refreshing_herb.tres" id="2_f2myb"]
+
+[resource]
+script = ExtResource("1_a1kul")
+name = "Weee:("
+hp_max = 31
+sp_max = 85
+attack = 5
+defense = 1
+items = Array[ExtResource("1_jwydx")]([ExtResource("2_f2myb"), ExtResource("2_f2myb")])
+drops = Array[ExtResource("1_jwydx")]([])
+metadata/_custom_type_script = "uid://ckh6yk2dmmq31"
