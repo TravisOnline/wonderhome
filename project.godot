@@ -33,6 +33,8 @@ window/stretch/mode="viewport"
 [global_group]
 
 battle_screen_enemies=""
+world_playa=""
+navigation_polygon_source_geometry_group=""
 
 [gui]
 

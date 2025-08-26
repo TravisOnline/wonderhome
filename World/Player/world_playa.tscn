@@ -444,7 +444,7 @@ parameters/Idle/blend_position = Vector2(-0.000700772, 1)
 parameters/Walk/blend_position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(1.135, 1.135)
+scale = Vector2(0.825, 0.825)
 shape = SubResource("CircleShape2D_sdxfi")
 
 [node name="CamFollowNode" type="RemoteTransform2D" parent="."]
