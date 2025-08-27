@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://npkxg6fkkcni" path="res://Battle/item.gd" id="1_gv2pm"]
 [ext_resource type="Script" uid="uid://ckh6yk2dmmq31" path="res://Battle/battle_actor.gd" id="1_o455n"]
-[ext_resource type="Texture2D" uid="uid://dumlwbcx7l5c" path="res://DebugResources/Art/bbbhuh.JPG" id="2_vxy40"]
+[ext_resource type="Texture2D" uid="uid://dumlwbcx7l5c" path="res://Battle/DebugResources/Art/bbbhuh.JPG" id="2_vxy40"]
 
 [resource]
 script = ExtResource("1_o455n")

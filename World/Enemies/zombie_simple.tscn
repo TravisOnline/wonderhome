@@ -1,6 +1,6 @@
 [gd_scene load_steps=55 format=3 uid="uid://c1y0oyi5iaafx"]
 
-[ext_resource type="Texture2D" uid="uid://dndh8bbgghgmf" path="res://DebugResources/Art/Small-8-Direction-Characters_by_AxulArt/Small-8-Direction-Characters_by_AxulArt.png" id="1_mf5s5"]
+[ext_resource type="Texture2D" uid="uid://dndh8bbgghgmf" path="res://Battle/DebugResources/Art/Small-8-Direction-Characters_by_AxulArt/Small-8-Direction-Characters_by_AxulArt.png" id="1_mf5s5"]
 [ext_resource type="Script" uid="uid://olujuo4iwy1v" path="res://World/Enemies/enemy_actor.gd" id="1_uf4aj"]
 [ext_resource type="Script" uid="uid://sufmn8taqvr3" path="res://ai/tasks/get_first_in_group.gd" id="2_pv7dk"]
 [ext_resource type="Script" uid="uid://bo7dg38q1kjus" path="res://ai/tasks/pursue.gd" id="3_kjo6t"]

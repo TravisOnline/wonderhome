@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bha5hwecq0vsg"]
+[gd_scene load_steps=21 format=4 uid="uid://bha5hwecq0vsg"]
 
 [ext_resource type="Script" uid="uid://0p8dutgs0lb" path="res://Battle/battle.gd" id="1_dme4p"]
 [ext_resource type="Theme" uid="uid://co1dvs00h351h" path="res://UI/menu1-theme.tres" id="1_ut43r"]
@@ -11,8 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://duoyklvanun7a" path="res://Utility/Textbox/textbox.tscn" id="5_ticc8"]
 [ext_resource type="PackedScene" uid="uid://co26covctfe86" path="res://Battle/player_panel_container.tscn" id="6_k8abi"]
 [ext_resource type="Script" uid="uid://cirlf1xxt5lys" path="res://Battle/player_h_box_container.gd" id="7_g30t3"]
-[ext_resource type="PackedScene" uid="uid://c5cy3gxynppqd" path="res://Battle/enemy_holder.tscn" id="7_o6f3u"]
-[ext_resource type="Resource" uid="uid://b403wavhdj4tl" path="res://Battle/Enemies/debug_zombie.tres" id="9_om3gc"]
 [ext_resource type="Script" uid="uid://cp7cr2w47jhhk" path="res://Battle/inventory_menu.gd" id="12_tsc8h"]
 [ext_resource type="PackedScene" uid="uid://k4ukonnt7tcf" path="res://Battle/item_button.tscn" id="15_tsc8h"]
 [ext_resource type="PackedScene" uid="uid://dxqj2vg8balkr" path="res://UI/screen_shake_2d.tscn" id="16_dh7om"]
@@ -384,14 +382,11 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = 3.0
-offset_right = 1.0
-offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_dme4p")
-metadata/_edit_use_anchors_ = true
 
 [node name="EventQueue" type="Node" parent="."]
 script = ExtResource("2_o6f3u")
@@ -471,14 +466,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_ut43r")
 buttons_container = NodePath(".")
-
-[node name="EnemyHolder" parent="EnemiesHolder" instance=ExtResource("7_o6f3u")]
-layout_mode = 2
-data = ExtResource("9_om3gc")
-
-[node name="EnemyHolder2" parent="EnemiesHolder" instance=ExtResource("7_o6f3u")]
-layout_mode = 2
-data = ExtResource("9_om3gc")
 
 [node name="BattleInfoTextBox" parent="." instance=ExtResource("5_ticc8")]
 visible = false

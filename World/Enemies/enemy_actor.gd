@@ -1,7 +1,6 @@
 class_name EnemyActor extends CharacterBody2D
 
 @onready var animation_tree: AnimationTree = $AnimationTree
-@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
 var _moved_this_frame: bool = false
@@ -47,4 +46,5 @@ func _on_agent_velocity_computed(safe_velocity: Vector2) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("world_playa"):
-		get_tree().change_scene_to_file("res://Battle/Battle.tscn")
+		#get_tree().change_scene_to_file("res://Battle/Battle.tscn")
+		BattleHolder.construct_scene()

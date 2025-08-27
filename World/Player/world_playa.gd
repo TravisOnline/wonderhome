@@ -33,5 +33,3 @@ func select_animation() -> void:
 		anim_playback.travel("Idle")
 	else:
 		anim_playback.travel("Walk")
-	
-	
