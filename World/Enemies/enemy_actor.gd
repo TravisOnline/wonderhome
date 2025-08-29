@@ -33,15 +33,27 @@ func move(p_velocity: Vector2) -> void:
 func update_animation_parameters() -> void:
 	if travel_direction == Vector2.ZERO:
 		return
-	# TODO: Fix the animation freak out when going from like 359 degrees to 0
-	animation_tree["parameters/Idle/blend_position"] = travel_direction
-	animation_tree["parameters/Walk/blend_position"] = travel_direction
+	
+	var discrete_direction = get_8_directional_vector(travel_direction)
+	animation_tree["parameters/Idle/blend_position"] = discrete_direction
+	animation_tree["parameters/Walk/blend_position"] = discrete_direction
 
 func select_animation() -> void:
 	if velocity == Vector2.ZERO:
 		anim_playback.travel("Idle")
 	else:
 		anim_playback.travel("Walk")
+
+func get_8_directional_vector(direction: Vector2) -> Vector2:
+	if direction == Vector2.ZERO:
+		return Vector2.ZERO
+	
+	var angle = direction.angle()
+	# Convert the direction to 8 way movement for animations
+	var dir_index = round(angle / (PI / 4.0))
+	var new_angle = dir_index * (PI / 4.0)
+	
+	return Vector2.from_angle(new_angle)
 
 func _on_agent_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity

@@ -47,8 +47,6 @@ func construct_scene(battle_to_construct:int, enemy_actor_node: EnemyActor) -> v
 	instantiated_battle = BATTLE_TEMPLATE_SCENE.instantiate()
 	battle_scene_enemies_holder = instantiated_battle.get_node("EnemiesHolder")
 	
-	# TODO: Add for loop for amount of enemies needed per battle
-	
 	for enemy in battle_tables[battle_to_construct]:
 		var instantiated_enemy_holder_template = ENEMY_HOLDER_TEMPLATE.instantiate()
 		battle_scene_enemies_holder.add_child(instantiated_enemy_holder_template)
