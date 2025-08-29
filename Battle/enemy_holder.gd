@@ -24,6 +24,7 @@ func _on_focus_exited() -> void:
 
 func _on_data_hp_changed(hp: int, _hp_max: int, _value_change: int)-> void:
 	if hp <= 0:
-		queue_free()
+		self.hide()
+		#queue_free()
 		# TODO: Add particle effect/screenshake whatever for when damaged
 		# Func.start() etc

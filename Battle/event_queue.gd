@@ -13,6 +13,8 @@ const LONG_WAIT_TIME: float = 1.25
 
 var events: Array[Dictionary]  = []
 
+@onready var battle: Control = $".."
+
 # TODO make it a global textbox I guess
 #@onready var textbox: Textbox = Globals.textbox
 @onready var battle_info_text_box: Textbox = $"../BattleInfoTextBox"
@@ -47,6 +49,7 @@ func run() -> void:
 		
 	if target.is_defeated():
 		await(run())
+		
 		return
 		# If I want to change this to instead find random target instead of do
 		# nothing, use the following:
@@ -80,7 +83,8 @@ func run() -> void:
 			
 			target.healhurt(damage)
 			if target_is_friendly:
-				Globals.screen_shake.add_trauma()
+				pass
+				#Globals.screen_shake.add_trauma()
 			if damage > 0:
 				battle_info_text_box.add("... " + target.name + " takes no damage!!")
 			else:
@@ -101,3 +105,5 @@ func run() -> void:
 		battle_info_text_box.add(target.name + " is dead.")
 		await(wait(LONG_WAIT_TIME))
 	await(run())
+	
+	BattleHolder.check_battle_over()

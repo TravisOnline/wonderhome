@@ -7,7 +7,7 @@ class_name WorldPlayer extends CharacterBody2D
 var input_vector
 var anim_playback: AnimationNodeStateMachinePlayback
 # Access this var to change starting direction
-var starting_direction:Vector2 = Vector2(0,1)
+var starting_direction: Vector2 = Vector2(0,1)
 
 func _ready() -> void:
 	if cam_follow_node:

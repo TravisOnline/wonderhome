@@ -13,6 +13,9 @@ var current_item: Item = null
 @onready var player_h_box_container: PlayerWindows = $PlayerWindow/PlayerHBoxContainer
 @onready var inventory_panel_container: InventoryMenu = $PlayerWindow/InventoryPanelContainer
 
+# TODO: Refactor this. Probably don't need to check every frame and can do it after every turn
+#func _physics_process(delta: float) -> void:
+
 func _ready() -> void:
 	goto_next_player()
 
@@ -26,10 +29,7 @@ func _input(event: InputEvent) -> void:
 			event_queue.pop_back()
 			goto_next_player(-1)
 		else:
-			# TODO fix this fucking up when calling else twice at any point
-			# possibly something to do with the menu script as nothing should be happening here.
-			# Video at https://youtu.be/wU-UOChDvV4?feature=shared&t=1567
-			return
+			pass
 			
 		get_viewport().set_input_as_handled()
 	
@@ -67,7 +67,6 @@ func _on_options_button_pressed(button: BaseButton, _index: int) -> void:
 		"Attack":
 			current_action = Actions.ATTACK
 			enemies_holder.button_focus()
-		# If no above options, run below code
 		"Item":
 			current_action = Actions.ITEM
 			inventory_panel_container.inventory = party[current_player_index].inventory

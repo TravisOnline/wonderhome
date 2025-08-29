@@ -3,6 +3,8 @@ class_name EnemyActor extends CharacterBody2D
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
+@export var battle_id: int = 0
+
 var _moved_this_frame: bool = false
 var anim_playback: AnimationNodeStateMachinePlayback
 var travel_direction: Vector2
@@ -46,5 +48,4 @@ func _on_agent_velocity_computed(safe_velocity: Vector2) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("world_playa"):
-		#get_tree().change_scene_to_file("res://Battle/Battle.tscn")
-		BattleHolder.construct_scene()
+		BattleHolder.construct_scene(battle_id, self)

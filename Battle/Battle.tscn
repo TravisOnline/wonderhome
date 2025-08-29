@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://bha5hwecq0vsg"]
+[gd_scene load_steps=20 format=4 uid="uid://bha5hwecq0vsg"]
 
 [ext_resource type="Script" uid="uid://0p8dutgs0lb" path="res://Battle/battle.gd" id="1_dme4p"]
 [ext_resource type="Theme" uid="uid://co1dvs00h351h" path="res://UI/menu1-theme.tres" id="1_ut43r"]
@@ -13,7 +13,6 @@
 [ext_resource type="Script" uid="uid://cirlf1xxt5lys" path="res://Battle/player_h_box_container.gd" id="7_g30t3"]
 [ext_resource type="Script" uid="uid://cp7cr2w47jhhk" path="res://Battle/inventory_menu.gd" id="12_tsc8h"]
 [ext_resource type="PackedScene" uid="uid://k4ukonnt7tcf" path="res://Battle/item_button.tscn" id="15_tsc8h"]
-[ext_resource type="PackedScene" uid="uid://dxqj2vg8balkr" path="res://UI/screen_shake_2d.tscn" id="16_dh7om"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tsc8h"]
 shader = ExtResource("2_ticc8")
@@ -62,6 +61,7 @@ style_name = "Regular"
 font_style = 4
 subpixel_positioning = 0
 msdf_pixel_range = 8
+msdf_size = 128
 oversampling = 2.9
 cache/0/10/0/ascent = 8.96552
 cache/0/10/0/descent = -1.03448
@@ -579,8 +579,8 @@ layout_mode = 2
 [node name="ItemButton4" parent="PlayerWindow/InventoryPanelContainer/GridContainer" instance=ExtResource("15_tsc8h")]
 layout_mode = 2
 
-[node name="ScreenShake2D" parent="." instance=ExtResource("16_dh7om")]
-decay = 0.1
+[node name="BattleCamera" type="Camera2D" parent="."]
+position = Vector2(319, 180)
 
 [connection signal="button_pressed" from="EnemiesHolder" to="." method="_on_enemies_holder_button_pressed"]
 [connection signal="button_pressed" from="PlayerWindow/Options" to="." method="_on_options_button_pressed"]

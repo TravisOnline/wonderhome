@@ -158,12 +158,13 @@ func connect_to_buttons(target: Object, _name: String = name) -> void:
 	callable = Callable(target, "_on_" + _name + "_button_pressed")
 	button_pressed.connect(callable)
 
-# TOOD: Fix this so game doesn't crash if enemy dead lol
+# TODO: Fix this so game doesn't crash if enemy dead lol
 func button_enable_focus(on: bool) -> void:
 	var mode: FocusMode = FocusMode.FOCUS_ALL if on else FocusMode.FOCUS_NONE
 	for button in get_buttons():
 		# THIS IS THE ISSUE V need a try -> if fail select next enemy in array
-		button.set_focus_mode(mode)
+		if button:
+			button.set_focus_mode(mode)
 	
 	if hide_on_focus_exit:
 		visible = on
@@ -262,3 +263,10 @@ func _on_Button_tree_exiting(button: BaseButton) -> void:
 
 func _on_tree_exiting() -> void:
 	exiting = true
+
+func _check_enemies_alive() -> bool:
+	for child in get_children():
+		if child is CanvasItem or child is VisualInstance3D:
+			if child.is_visible_in_tree():
+				return true
+	return false

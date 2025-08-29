@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=4 uid="uid://dcog8mk841jw"]
+[gd_scene load_steps=14 format=4 uid="uid://dcog8mk841jw"]
 
 [ext_resource type="PackedScene" uid="uid://dbw7ybjj7858s" path="res://World/Player/world_playa.tscn" id="1_4waot"]
+[ext_resource type="Script" uid="uid://bh1nog8i5bpi1" path="res://Rooms/Scripts/room.gd" id="1_kkxfw"]
 [ext_resource type="Texture2D" uid="uid://bpjivq2c6iggi" path="res://Battle/DebugResources/Art/Tilemaps/debug-tiles01.png" id="1_n0up7"]
 [ext_resource type="PackedScene" uid="uid://by2thsnyoppy" path="res://World/Player/world_cam.tscn" id="2_56fff"]
 [ext_resource type="Texture2D" uid="uid://bandsiw8fr8fa" path="res://Battle/DebugResources/Art/Tilemaps/beezle-tilemap.png" id="2_dlbcx"]
@@ -195,6 +196,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_n0up7")
 
 [node name="Debug_World" type="Node2D"]
+script = ExtResource("1_kkxfw")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_nxy05")
@@ -224,6 +226,7 @@ position = Vector2(181, 221)
 position = Vector2(222, 226)
 
 [node name="WorldCam" parent="." instance=ExtResource("2_56fff")]
+script = null
 
 [node name="Foreground" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)
