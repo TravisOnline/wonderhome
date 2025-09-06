@@ -84,17 +84,20 @@ func run() -> void:
 			target.healhurt(damage)
 			if target_is_friendly:
 				pass
+				# TODO: re-add screenshake
 				#Globals.screen_shake.add_trauma()
 			if damage > 0:
 				battle_info_text_box.add("... " + target.name + " takes no damage!!")
 			else:
 				battle_info_text_box.add("..." + target.name + " takes " + str(abs(damage)) + " in damage!!")
 		Actions.ITEM:
+			var this_item_type = item.get_item_type()
 			text += " uses " + item.name + "..."
 			battle_info_text_box.start("", [text])
-			await(wait(SHORT_WAIT_TIME))
-			
-			battle_info_text_box.add("... but items is piss")
+			if this_item_type == "RestoreHealth":
+				await(wait(SHORT_WAIT_TIME))
+				var healed_amount = target.healhurt(item.heal_amount)
+				battle_info_text_box.add("" + target.name + " is healed for " + str(abs(healed_amount)) + ".")
 		_:
 			print("Action not found")
 			pass

@@ -21,6 +21,7 @@ Debug="*res://Utility/Globals/debug.gd"
 PlayerData="*res://Player/player_data.gd"
 Globals="*res://Utility/globals.gd"
 BattleHolder="*res://Utility/Globals/battle_holder.gd"
+SceneManager="*res://Utility/scene_manager.gd"
 
 [display]
 

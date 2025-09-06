@@ -70,7 +70,6 @@ func _on_options_button_pressed(button: BaseButton, _index: int) -> void:
 		"Item":
 			current_action = Actions.ITEM
 			inventory_panel_container.inventory = party[current_player_index].inventory
-			print(inventory_panel_container.inventory)
 			inventory_panel_container.button_focus()
 		_:
 			pass

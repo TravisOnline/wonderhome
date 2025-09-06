@@ -18,7 +18,7 @@ var sp:int = sp_max
 var inventory: Inventory = null
 
 func init() -> void:
-	hp = hp_max
+	hp = hp_max 
 	sp = sp_max
 	
 	if items: 
@@ -51,5 +51,4 @@ func healhurt(value: int) -> int:
 	var value_change: int = previous_hp - hp
 	hp = clampi(hp, 0, hp_max)
 	hp_changed.emit(hp, hp_max, value_change)
-	#print(name, " ", hp)
 	return value_change
