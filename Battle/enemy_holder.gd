@@ -11,7 +11,7 @@ class_name EnemyHolder extends TextureButton
 func _ready() -> void:
 	animation_player.play("RESET")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# TODO: Remove this efect. Used to show enemy hit flash.
 	# Will need to remove timer from the prefab as well
 	pass

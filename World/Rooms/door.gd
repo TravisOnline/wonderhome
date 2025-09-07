@@ -8,16 +8,7 @@ signal player_entered_door(door:Door, transition_type:String)
 @export var path_to_new_scene : String
 @export var entry_door_name : String
 
-func _on_body_entered(body : Node2D) -> void:
-	if not body is WorldPlayer:
-		return
-	player_entered_door.emit(self)
-	if transition_type == "zelda":
-		SceneManager.load_level_zelda(path_to_new_scene)
-	else:
-		SceneManager.load_new_scene(path_to_new_scene,transition_type)
-	queue_free()
-	
+
 func get_player_entry_vector() -> Vector2:
 	var vector:Vector2 = Vector2.LEFT
 	match entry_direction:
@@ -39,3 +30,11 @@ func get_move_dir() -> Vector2:
 		2:
 			dir = Vector2.UP
 	return dir
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.get_parent() == WorldPlayer:
+		return
+	player_entered_door.emit(self)
+	SceneManager.load_new_scene(path_to_new_scene,transition_type)
+	queue_free()

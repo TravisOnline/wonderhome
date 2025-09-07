@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=4 uid="uid://dcog8mk841jw"]
+[gd_scene load_steps=15 format=4 uid="uid://dcog8mk841jw"]
 
 [ext_resource type="PackedScene" uid="uid://dbw7ybjj7858s" path="res://World/Player/world_playa.tscn" id="1_4waot"]
 [ext_resource type="Script" uid="uid://bh1nog8i5bpi1" path="res://World/Rooms/Scripts/room.gd" id="1_kkxfw"]
-[ext_resource type="Texture2D" uid="uid://bpjivq2c6iggi" path="res://Battle/DebugResources/Art/Tilemaps/debug-tiles01.png" id="1_n0up7"]
+[ext_resource type="Texture2D" uid="uid://bpjivq2c6iggi" path="res://Art/Tilemaps/debug-tiles01.png" id="1_n0up7"]
 [ext_resource type="PackedScene" uid="uid://by2thsnyoppy" path="res://World/Player/world_cam.tscn" id="2_56fff"]
-[ext_resource type="Texture2D" uid="uid://bandsiw8fr8fa" path="res://Battle/DebugResources/Art/Tilemaps/beezle-tilemap.png" id="2_dlbcx"]
+[ext_resource type="Texture2D" uid="uid://bandsiw8fr8fa" path="res://Art/Tilemaps/beezle-tilemap.png" id="2_dlbcx"]
 [ext_resource type="PackedScene" uid="uid://c1y0oyi5iaafx" path="res://World/Enemies/zombie_simple.tscn" id="5_nxy05"]
+[ext_resource type="PackedScene" uid="uid://bc8iswwy8xemy" path="res://World/Rooms/door.tscn" id="7_8jydl"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_nxy05"]
 vertices = PackedVector2Array(489, 43, 597, 75, 617, 119, 565, 119, 361, 107, 405, 43, 12.8828, 364.961, 361, 235, 565, 203, 617, 203, 634.078, 363.031, 636.703, 75, 361, -41, 405, -9, 361, 183, 277, 235, 277, 183, 10.3672, 139, 41, 139, 213, 171, 329, 171, 329, 107, 637.172, 23, 617, 23, 617, -41, 637.898, -58.0938, 8.10938, -63.8984, 565, -41, 565, 43, 597, 43, 489, -9, 309, -41, 309, 23, 297, 23, 297, -9, 233, -9, 233, -41, 149, 43, 181, 43, 181, 55, 149, 55, 201, 139, 201, 75, 213, 75, 213, 107, 245, 107, 245, 119, 213, 119, 21, -9, 21, 23, 9.09375, 23, 137, -9, 149, -41, 149, 139, 137, 139, 137, 55, 137, 43, 53, 139, 53, 55, 41, 43)
@@ -195,8 +196,10 @@ texture = ExtResource("1_n0up7")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_n0up7")
 
-[node name="Debug_World" type="Node2D"]
+[node name="Debug_World" type="Node2D" node_paths=PackedStringArray("doors", "enemies")]
 script = ExtResource("1_kkxfw")
+doors = [NodePath("Door")]
+enemies = [NodePath("ZombieSimple")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_nxy05")
@@ -220,10 +223,10 @@ tile_map_data = PackedByteArray("AAAIAAQAAQAEAAAAAAAJAAQAAQAFAAAAAAAAAAIAAQAIAAA
 tile_set = SubResource("TileSet_kkxfw")
 
 [node name="WorldPlaya" parent="." instance=ExtResource("1_4waot")]
-position = Vector2(181, 221)
+position = Vector2(481, 233)
 
 [node name="ZombieSimple" parent="." instance=ExtResource("5_nxy05")]
-position = Vector2(222, 226)
+position = Vector2(38, 81)
 
 [node name="WorldCam" parent="." instance=ExtResource("2_56fff")]
 script = null
@@ -234,3 +237,10 @@ tile_map_data = PackedByteArray("AAAAAAsAAAAIAAIAAAABAAsAAAAIAAIAAAACAAsAAAAIAAI
 tile_set = SubResource("TileSet_dlbcx")
 
 [node name="Enemies" type="Node2D" parent="."]
+
+[node name="Door" parent="." instance=ExtResource("7_8jydl")]
+position = Vector2(644, 222)
+entry_direction = 1
+push_distance = 32
+path_to_new_scene = "res://World/Rooms/debug_world_02.tscn"
+entry_door_name = "debug_world_01_east"

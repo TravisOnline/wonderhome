@@ -37,7 +37,6 @@ func _enter() -> void:
 	navigation_agent2 = agent.get_node_or_null("NavigationAgent2D")
 	navigation_agent2.avoidance_enabled = true
 
-
 # Called each time this task is ticked (aka executed).
 func _tick(_delta: float) -> Status:
 	var target: Node2D = blackboard.get_var(target_var, null)

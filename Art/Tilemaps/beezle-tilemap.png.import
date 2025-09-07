@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpjivq2c6iggi"
-path="res://.godot/imported/debug-tiles01.png-604dd5af8cefcb5508e15a1c43457eac.ctex"
+uid="uid://bandsiw8fr8fa"
+path="res://.godot/imported/beezle-tilemap.png-43ba0a96be7e3b4f9e85f0052f485785.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Battle/DebugResources/Art/Tilemaps/debug-tiles01.png"
-dest_files=["res://.godot/imported/debug-tiles01.png-604dd5af8cefcb5508e15a1c43457eac.ctex"]
+source_file="res://Art/Tilemaps/beezle-tilemap.png"
+dest_files=["res://.godot/imported/beezle-tilemap.png-43ba0a96be7e3b4f9e85f0052f485785.ctex"]
 
 [params]
 
