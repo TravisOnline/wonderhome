@@ -20,7 +20,6 @@ func get_player_entry_vector() -> Vector2:
 			vector = Vector2.LEFT
 		2:
 			vector = Vector2.DOWN
-	print("get_player_entry_vector: ", vector)
 	return (vector * push_distance) + self.position
 	
 func get_move_dir() -> Vector2:

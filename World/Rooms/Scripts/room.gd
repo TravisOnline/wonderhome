@@ -28,8 +28,8 @@ func init_player_location() -> void:
 		for door in doors:
 			if door.name == data.entry_door_name:
 				this_player.position = door.get_player_entry_vector()
-		#this_player.orient(data.move_dir)
-		#this_player_prefab.instantiate()
+				# Set player facing direction to door facing direction
+				this_player.animation_tree["parameters/Idle/blend_position"] = door.get_move_dir()
 	this_player = Globals.worldplayer
 
 func _on_player_entered_door(door:Door) -> void:
