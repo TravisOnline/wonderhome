@@ -25,7 +25,7 @@ func _physics_process(_delta: float) -> void:
 func update_animation_parameters() -> void:
 	if input_vector == Vector2.ZERO:
 		return
-		
+	
 	animation_tree["parameters/Idle/blend_position"] = input_vector
 	animation_tree["parameters/Walk/blend_position"] = input_vector
 
@@ -34,3 +34,9 @@ func select_animation() -> void:
 		anim_playback.travel("Idle")
 	else:
 		anim_playback.travel("Walk")
+
+func get_input_vector() -> Input:
+	return input_vector
+
+func manually_set_direction(previous_direction: Input) -> void:
+	animation_tree["parameters/Idle/blend_position"] = previous_direction

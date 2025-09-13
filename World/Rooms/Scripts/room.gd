@@ -3,6 +3,8 @@ class_name Room extends Node2D
 @export var doors : Array[Door]
 @export var enemies : Array[EnemyActor]
 var data:LevelDataHandoff
+var this_player : WorldPlayer
+var this_player_prefab
 
 func _ready() -> void:
 	#if Globals.worldplayer:
@@ -19,25 +21,31 @@ func enter_room() -> void:
 	_connect_to_doors()
 
 func init_player_location() -> void:
+	var this_player_prefab : PackedScene = Globals.worldplayer_prefab
+	this_player = this_player_prefab.instantiate()
+	add_child(this_player)
 	if data != null:
 		for door in doors:
 			if door.name == data.entry_door_name:
-				Globals.worldplayer.position = door.get_player_entry_vector()
-		Globals.worldplayer.orient(data.move_dir)
+				this_player.position = door.get_player_entry_vector()
+		#this_player.orient(data.move_dir)
+		#this_player_prefab.instantiate()
+	this_player = Globals.worldplayer
 
 func _on_player_entered_door(door:Door) -> void:
 	for enemy in enemies:
-		enemy.PROCESS_MODE_DISABLED
+		if enemy:
+			enemy.PROCESS_MODE_DISABLED
 		# TODO: remove this code if enemies do not respawn upon re-enter. May need to redo this
 		# entirely if I want to keep their location or move them around when the player is not
 		# int the room
-		enemy.queue_free()
+			enemy.queue_free()
 	_disconnect_from_doors()
-	if Globals.worldplayer:
+	if this_player:
 		#Globals.worldplayer.disable()
 	# Seems stupid. Will probably need to TODO replace this so my player isn't getting nuked between
 	# Rooms
-		Globals.worldplayer.queue_free()
+		this_player.queue_free()
 	data = LevelDataHandoff.new()
 	data.entry_door_name = door.entry_door_name
 	data.move_dir = door.get_move_dir()

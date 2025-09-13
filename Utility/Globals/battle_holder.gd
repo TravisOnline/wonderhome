@@ -39,7 +39,9 @@ func load_resources_to_dict(path: String, dict: Dictionary) -> void:
 func construct_scene(battle_to_construct:int, enemy_actor_node: EnemyActor) -> void:
 	if enemy_actor_node:
 		world_enemy_actor = enemy_actor_node
-		
+	
+	# TODO: this is throwing an error on previously entered room fight because im not updating
+	# the current scene on room emtry
 	Globals.current_scene.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	#TODO: Trigger visual FX in environment

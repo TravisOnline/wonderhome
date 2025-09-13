@@ -6,11 +6,13 @@ signal player_entered_door(door:Door, transition_type:String)
 @export_enum("fade_to_black", "wipe_to_right") var transition_type:String
 @export var push_distance : int = 16
 @export var path_to_new_scene : String
+# Name of the door in the other scene that connects to this node
 @export var entry_door_name : String
 
 
 func get_player_entry_vector() -> Vector2:
-	var vector:Vector2 = Vector2.LEFT
+	var vector:Vector2 = Vector2.RIGHT
+	print(entry_direction)
 	match entry_direction:
 		0:
 			vector = Vector2.UP
@@ -18,6 +20,7 @@ func get_player_entry_vector() -> Vector2:
 			vector = Vector2.LEFT
 		2:
 			vector = Vector2.DOWN
+	print("get_player_entry_vector: ", vector)
 	return (vector * push_distance) + self.position
 	
 func get_move_dir() -> Vector2:

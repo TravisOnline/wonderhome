@@ -56,7 +56,6 @@ func monitor_load_status() -> void:
 		ResourceLoader.THREAD_LOAD_LOADED:
 			_load_progress_timer.stop()
 			_load_progress_timer.queue_free()
-			content_failed_to_load.emit("test123")
 			content_finished_loading.emit(ResourceLoader.load_threaded_get(_content_path).instantiate())
 			return
 
@@ -67,7 +66,7 @@ func on_content_invalid(path:String) -> void:
 	printerr("Cannot load resource: '%s'" % [path])
 
 func on_content_finished_loading(content) -> void:
-	print("Scene Manager says: content finished loading")
+	#print("Scene Manager says: content finished loading")
 	var outgoing_scene = get_tree().current_scene
 	
 	var incoming_data : LevelDataHandoff
@@ -85,12 +84,8 @@ func on_content_finished_loading(content) -> void:
 	Globals.current_scene=get_tree().current_scene
 	
 	if loading_screen != null:
-		loading_screen.finish_transition()
-		if content is Room:
-			content.init_player_location()
-	
 		await loading_screen.anim_player.animation_finished
-		loading_screen = null
-		
 		if content is Room:
 			content.enter_room()
+		loading_screen.finish_transition()
+		loading_screen = null
