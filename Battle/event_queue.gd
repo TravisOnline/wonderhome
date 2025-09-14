@@ -21,7 +21,6 @@ var events: Array[Dictionary]  = []
 
 func add(action: Actions, actor: BattleActor, target: BattleActor, item: Item) -> void:
 	events.append({"action": action,"actor": actor,"target": target, "item":item})
-	#print("Adding event: ", actor.name, " is ", Actions.keys()[action], " ", target.name, ".", " Item is ", item)
 
 func pop_back() -> void:
 	events.pop_back()
@@ -73,7 +72,6 @@ func run() -> void:
 			#print_debug("Battle end?")
 			#return
 		
-	#vprint("Event queue running event: ", event.actor.name, " ", Actions.keys()[action], " ", target.name)
 	match action:
 		Actions.ATTACK:
 			var damage: int = actor.damage_roll(target)

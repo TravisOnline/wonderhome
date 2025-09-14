@@ -18,14 +18,14 @@ var sp:int = sp_max
 var inventory: Inventory = null
 
 func init() -> void:
-	hp = hp_max 
+	hp = hp_max -1
 	sp = sp_max
 	
 	if items: 
 		inventory = Inventory.new()
-		var j: int = 0
+		#var j: int = 0
 		for i: Item in items:
-			j += 1
+			#j += 1
 			inventory.add_item(i)
 
 # No idea why, but the hp_max will not be set from default
@@ -46,9 +46,26 @@ func damage_roll(target: BattleActor) -> int:
 
 func healhurt(value: int) -> int:
 	var previous_hp: int = hp
-	hp += value
-	
-	var value_change: int = previous_hp - hp
-	hp = clampi(hp, 0, hp_max)
-	hp_changed.emit(hp, hp_max, value_change)
+	var value_change : int
+	# If damage
+	if value <= 0:
+		hp += value
+		value_change = previous_hp - hp
+		hp = clampi(hp, 0, hp_max)
+		hp_changed.emit(hp, hp_max, value_change)
+	# If heal
+	else:
+		var maximum_heal_amount = hp_max - previous_hp
+		# If the item heal value is less than or equal to the amount of missing HP,
+		# use it in its entirity
+		if value <= maximum_heal_amount:
+			hp += value
+			value_change = previous_hp - hp
+		# If the healing item value is NOT less than or equal to missing hp, only
+		# partially heal to max hp
+		else:
+			hp += maximum_heal_amount
+			value_change = maximum_heal_amount
+		hp = clampi(hp, 0, hp_max)
+		hp_changed.emit(hp, hp_max, value_change)
 	return value_change

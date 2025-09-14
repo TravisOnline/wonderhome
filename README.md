@@ -2,7 +2,7 @@ Very loosely based off of Sweet Home, Resident Evil 1, GU-L etc.
 
 #### TODO:
 ```
-- Fix AI animation freakout when going from facing NW -> N.
-	- This seems to do 1 full rotation clockwise until facing north when. Might be an issue with how the animations are handled when calculating the degrees facing
-- Fix game crashing when looking for new enemy after previously targetted enemy from last turn is kill
+- Have event queue accurately report the HP healed by items rather than item heal value
+- Await full screen blakout before hiding sprites
+- Put check in after each attack to check if all enemies or all friendly characters area dead
 ```

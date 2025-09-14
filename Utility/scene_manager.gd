@@ -23,6 +23,7 @@ func load_new_scene(content_path:String, transition_type:String="fade_to_black")
 	_load_content(content_path)
 	
 func _load_content(content_path:String) -> void:
+	Globals.worldplayer.disable_player()
 	if loading_screen != null:
 		await loading_screen.transition_incomplete
 
@@ -80,8 +81,7 @@ func on_content_finished_loading(content) -> void:
 
 	get_tree().root.call_deferred("add_child",content)
 	get_tree().set_deferred("current_scene",content)
-	# TODO: Maybe remove this from Globals? Is it even needed if we can call the above?
-	Globals.current_scene=get_tree().current_scene
+	#Globals.current_scene=get_tree().current_scene
 	
 	if loading_screen != null:
 		await loading_screen.anim_player.animation_finished

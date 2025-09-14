@@ -1,6 +1,7 @@
 class_name WorldPlayer extends CharacterBody2D
 
 @onready var cam_follow_node: RemoteTransform2D = $CamFollowNode
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
 @export var speed: int = 200
 
@@ -8,6 +9,8 @@ var input_vector
 var anim_playback: AnimationNodeStateMachinePlayback
 # Access this var to change starting direction
 var starting_direction: Vector2 = Vector2(0,1)
+var can_move : bool = true
+
 
 func _ready() -> void:
 	Globals.worldplayer = self
@@ -16,11 +19,12 @@ func _ready() -> void:
 	anim_playback = animation_tree["parameters/playback"]
 
 func _physics_process(_delta: float) -> void:
-	input_vector = Input.get_vector("left", "right", "up", "down")
-	velocity = input_vector * speed
-	move_and_slide()
-	select_animation()
-	update_animation_parameters()
+	if can_move:
+		input_vector = Input.get_vector("left", "right", "up", "down")
+		velocity = input_vector * speed
+		move_and_slide()
+		select_animation()
+		update_animation_parameters()
 
 func update_animation_parameters() -> void:
 	if input_vector == Vector2.ZERO:
@@ -38,5 +42,6 @@ func select_animation() -> void:
 func get_input_vector() -> Input:
 	return input_vector
 
-func manually_set_direction(previous_direction: Input) -> void:
-	animation_tree["parameters/Idle/blend_position"] = previous_direction
+func disable_player() -> void:
+	can_move = false
+	anim_player.pause()

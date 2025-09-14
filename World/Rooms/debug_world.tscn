@@ -1,6 +1,5 @@
-[gd_scene load_steps=15 format=4 uid="uid://dcog8mk841jw"]
+[gd_scene load_steps=14 format=4 uid="uid://dcog8mk841jw"]
 
-[ext_resource type="PackedScene" uid="uid://dbw7ybjj7858s" path="res://World/Player/world_playa.tscn" id="1_4waot"]
 [ext_resource type="Script" uid="uid://bh1nog8i5bpi1" path="res://World/Rooms/Scripts/room.gd" id="1_kkxfw"]
 [ext_resource type="Texture2D" uid="uid://bpjivq2c6iggi" path="res://Art/Tilemaps/debug-tiles01.png" id="1_n0up7"]
 [ext_resource type="PackedScene" uid="uid://by2thsnyoppy" path="res://World/Player/world_cam.tscn" id="2_56fff"]
@@ -196,8 +195,9 @@ texture = ExtResource("1_n0up7")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_n0up7")
 
-[node name="Debug_World" type="Node2D" node_paths=PackedStringArray("doors", "enemies")]
+[node name="Debug_World" type="Node2D" node_paths=PackedStringArray("playerholder", "doors", "enemies")]
 script = ExtResource("1_kkxfw")
+playerholder = NodePath("PlayerHolder")
 doors = [NodePath("debug_world_01_east")]
 enemies = [NodePath("ZombieSimple")]
 
@@ -222,26 +222,26 @@ tile_set = SubResource("TileSet_kkxfw")
 tile_map_data = PackedByteArray("AAAIAAQAAQAEAAAAAAAJAAQAAQAFAAAAAAAAAAIAAQAIAAAAAAAAAAMAAQAIAAEAAAA=")
 tile_set = SubResource("TileSet_kkxfw")
 
-[node name="WorldPlaya" parent="." instance=ExtResource("1_4waot")]
-position = Vector2(481, 233)
-
 [node name="ZombieSimple" parent="." instance=ExtResource("5_nxy05")]
-position = Vector2(-121, -125)
+position = Vector2(403, 197)
+
+[node name="PlayerHolder" type="Node2D" parent="."]
 
 [node name="WorldCam" parent="." instance=ExtResource("2_56fff")]
 script = null
 
-[node name="Foreground" type="TileMapLayer" parent="."]
-scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AAAAAAsAAAAIAAIAAAABAAsAAAAIAAIAAAACAAsAAAAIAAIAAAADAAsAAAAIAAIAAAAEAAsAAAAIAAIAAAAFAAsAAAAIAAIAAAAGAAsAAAAIAAIAAAAHAAsAAAAIAAIAAAAIAAsAAAAIAAIAAAAJAAsAAAAIAAIAAAAKAAsAAAAIAAIAAAALAAsAAAAIAAIAAAAMAAsAAAAIAAIAAAANAAsAAAAIAAIAAAAOAAsAAAAIAAIAAAAPAAsAAAAIAAIAAAAQAAsAAAAIAAIAAAARAAsAAAAIAAIAAAASAAsAAAAIAAIAAAATAAsAAAALAAEAAAATAAYAAAAJAAIAAAATAAcAAAAJAAEAAAATAAIAAAAJAAIAAAA=")
-tile_set = SubResource("TileSet_dlbcx")
-
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="debug_world_01_east" parent="." instance=ExtResource("7_8jydl")]
-position = Vector2(643, 227)
+position = Vector2(658, 225)
 entry_direction = 1
 transition_type = "fade_to_black"
 push_distance = 50
 path_to_new_scene = "res://World/Rooms/debug_world_02.tscn"
 entry_door_name = "debug_world_02_west"
+
+[node name="Foreground" type="TileMapLayer" parent="."]
+visibility_layer = 3
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAAAAsAAAAIAAIAAAABAAsAAAAIAAIAAAACAAsAAAAIAAIAAAADAAsAAAAIAAIAAAAEAAsAAAAIAAIAAAAFAAsAAAAIAAIAAAAGAAsAAAAIAAIAAAAHAAsAAAAIAAIAAAAIAAsAAAAIAAIAAAAJAAsAAAAIAAIAAAAKAAsAAAAIAAIAAAALAAsAAAAIAAIAAAAMAAsAAAAIAAIAAAANAAsAAAAIAAIAAAAOAAsAAAAIAAIAAAAPAAsAAAAIAAIAAAAQAAsAAAAIAAIAAAARAAsAAAAIAAIAAAASAAsAAAAIAAIAAAATAAsAAAALAAEAAAATAAYAAAAJAAIAAAATAAcAAAAJAAEAAAATAAIAAAAJAAIAAAA=")
+tile_set = SubResource("TileSet_dlbcx")

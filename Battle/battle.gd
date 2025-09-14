@@ -13,9 +13,6 @@ var current_item: Item = null
 @onready var player_h_box_container: PlayerWindows = $PlayerWindow/PlayerHBoxContainer
 @onready var inventory_panel_container: InventoryMenu = $PlayerWindow/InventoryPanelContainer
 
-# TODO: Refactor this. Probably don't need to check every frame and can do it after every turn
-#func _physics_process(delta: float) -> void:
-
 func _ready() -> void:
 	goto_next_player()
 
@@ -53,7 +50,6 @@ func goto_next_player(dir: int = 1) -> void:
 		if get_viewport().gui_get_focus_owner():
 			get_viewport().gui_get_focus_owner().release_focus()
 		player_h_box_container.activate(-1)
-		#print("DEBUG: Total events in queue: ", event_queue.events.size())
 		await(event_queue.run())
 		current_player_index = 0
 

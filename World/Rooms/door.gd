@@ -12,7 +12,6 @@ signal player_entered_door(door:Door, transition_type:String)
 
 func get_player_entry_vector() -> Vector2:
 	var vector:Vector2 = Vector2.RIGHT
-	print(entry_direction)
 	match entry_direction:
 		0:
 			vector = Vector2.UP
