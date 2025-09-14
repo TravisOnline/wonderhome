@@ -87,7 +87,8 @@ func run() -> void:
 			if damage > 0:
 				battle_info_text_box.add("... " + target.name + " takes no damage!!")
 			else:
-				battle_info_text_box.add("..." + target.name + " takes " + str(abs(damage)) + " in damage!!")
+				battle_info_text_box.add("..." + target.name + " takes " + str(abs(damage)) 
+				+ " in damage!!")
 		Actions.ITEM:
 			var this_item_type = item.get_item_type()
 			text += " uses " + item.name + "..."
@@ -95,7 +96,13 @@ func run() -> void:
 			if this_item_type == "RestoreHealth":
 				await(wait(SHORT_WAIT_TIME))
 				var healed_amount = target.healhurt(item.heal_amount)
-				battle_info_text_box.add("" + target.name + " is healed for " + str(abs(healed_amount)) + ".")
+				if healed_amount >0:
+					battle_info_text_box.add("" + target.name + " is healed for " 
+					+ str(abs(healed_amount)) + ".")
+				else:
+					battle_info_text_box.add("" + actor.name + " tries to heal " 
+					+ target.name + " but " + target.name + "is already at full health.")
+			PlayerData.remove_item_from_inventory(item)
 		_:
 			print("Action not found")
 			pass

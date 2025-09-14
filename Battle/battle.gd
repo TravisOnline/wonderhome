@@ -65,7 +65,8 @@ func _on_options_button_pressed(button: BaseButton, _index: int) -> void:
 			enemies_holder.button_focus()
 		"Item":
 			current_action = Actions.ITEM
-			inventory_panel_container.inventory = party[current_player_index].inventory
+			#inventory_panel_container.inventory = party[current_player_index].item_inventory
+			inventory_panel_container.inventory = PlayerData.playerinventory
 			inventory_panel_container.button_focus()
 		_:
 			pass

@@ -4,7 +4,10 @@
 
 [resource]
 script = ExtResource("1_b1opg")
+this_item_type = "RestoreHealth"
 quantity = 1
-stackable = false
+stackable = true
 value = 20
+heal_amount = 5
+healing_item = true
 metadata/_custom_type_script = "uid://npkxg6fkkcni"

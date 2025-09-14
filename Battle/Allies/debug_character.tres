@@ -12,5 +12,6 @@ sp_max = 20
 attack = 15
 defense = 1
 items = Array[ExtResource("1_m48fs")]([ExtResource("2_8oguk"), ExtResource("2_8oguk"), ExtResource("2_8oguk")])
+skills = Array[ExtResource("1_m48fs")]([])
 drops = Array[ExtResource("1_m48fs")]([])
 metadata/_custom_type_script = "uid://ckh6yk2dmmq31"
