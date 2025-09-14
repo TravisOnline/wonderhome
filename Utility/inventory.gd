@@ -46,15 +46,17 @@ func add_item_by_name(item_name: String, quantity: int = 1) -> bool:
 func add_item(item: Item) -> bool:
 	if not item:
 		return false
-		
 	return add_item_by_name(item.name, item.quantity)
 	
 func remove_item(item: Item) -> bool:
 	if not item:
 		return false
-	
-	item.quantity -= 1
-	if item.quantity == 0:
-		item.erase(item)
-	updated.emit()
+	if item and item.quantity >= 1:
+		item.quantity -= 1
+		updated.emit()
+		return true
+	items.erase(item)
 	return true
+
+func get_quantity(item: Item) -> int:
+	return item.quantity

@@ -5,6 +5,6 @@ var item: Item = null :
 		item = value
 		
 		if item:
-			text = item.name
+			text = "%s %d" % [item.name, item.quantity]
 		else: 
 			hide()

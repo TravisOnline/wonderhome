@@ -41,14 +41,13 @@ func run() -> void:
 	var item: Item = event.item
 	var text: String = actor.name
 	
-	# If the actor is dead, do nothing and trigget recursion for next event
+	# If the actor is dead, do nothing and trigger recursion for next event
 	if not actor.can_act():
 		await(run())
 		return
 		
 	if target.is_defeated():
 		await(run())
-		
 		return
 		# If I want to change this to instead find random target instead of do
 		# nothing, use the following:
@@ -91,18 +90,24 @@ func run() -> void:
 				+ " in damage!!")
 		Actions.ITEM:
 			var this_item_type = item.get_item_type()
-			text += " uses " + item.name + "..."
-			battle_info_text_box.start("", [text])
-			if this_item_type == "RestoreHealth":
-				await(wait(SHORT_WAIT_TIME))
-				var healed_amount = target.healhurt(item.heal_amount)
-				if healed_amount >0:
-					battle_info_text_box.add("" + target.name + " is healed for " 
-					+ str(abs(healed_amount)) + ".")
-				else:
-					battle_info_text_box.add("" + actor.name + " tries to heal " 
-					+ target.name + " but " + target.name + "is already at full health.")
-			PlayerData.remove_item_from_inventory(item)
+			if PlayerData.playerinventory.get_item_by_name(item.name):
+				text += " uses " + item.name + "..."
+				battle_info_text_box.start("", [text])
+				# If using a healint item
+				if this_item_type == "RestoreHealth":
+					await(wait(SHORT_WAIT_TIME))
+					var healed_amount = target.healhurt(item.heal_amount)
+					if healed_amount >0:
+						battle_info_text_box.add("" + target.name + " is healed for " 
+						+ str(abs(healed_amount)) + ".")
+					else:
+						battle_info_text_box.add("" + actor.name + " tries to heal " 
+						+ target.name + " but " + target.name + "is already at full health.")
+				PlayerData.remove_item_from_inventory(item)
+			else:
+				text += " tries to use " + item.name + "..."
+				battle_info_text_box.start("", [text])
+				battle_info_text_box.add(" but someone has already used it!")
 		_:
 			print("Action not found")
 			pass
@@ -111,7 +116,8 @@ func run() -> void:
 	
 	if target.is_defeated():
 		battle_info_text_box.add(target.name + " is dead.")
+		BattleHolder.check_battle_over()
 		await(wait(LONG_WAIT_TIME))
 	await(run())
+	# After all turns are done, update item button quantities
 	
-	BattleHolder.check_battle_over()

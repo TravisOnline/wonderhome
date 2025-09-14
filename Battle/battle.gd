@@ -36,6 +36,7 @@ func goto_next_player(dir: int = 1) -> void:
 	current_player_index += dir
 	current_player_index = clampi(current_player_index, 0, party.size())
 	inventory_panel_container.hide()
+	# Update item quantities on buttons
 	
 	# IF all player have moved, let AI do things
 	if current_player_index >= party.size():
@@ -65,7 +66,6 @@ func _on_options_button_pressed(button: BaseButton, _index: int) -> void:
 			enemies_holder.button_focus()
 		"Item":
 			current_action = Actions.ITEM
-			#inventory_panel_container.inventory = party[current_player_index].item_inventory
 			inventory_panel_container.inventory = PlayerData.playerinventory
 			inventory_panel_container.button_focus()
 		_:
